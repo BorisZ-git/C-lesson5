@@ -13,7 +13,7 @@ using System.Xml.Linq;
 модификатор ref или out)
 * 2.2 Добавить конструктор и методы, которые загружают данные из файла и записывают данные в
 файл.*/
-/* Вопросы: Что такое свойство? Для чего используется? В чем выгода? */
+/* Вопросы: Что такое свойство? Для чего используется? В чем выгода его применения? */
 
 namespace HW_FromPrevious1
 {
@@ -128,6 +128,10 @@ namespace HW_FromPrevious1
         }
     }
     //2.2
+    class LoadDA
+    {
+
+    }
     class Program
     {
         static void Main(string[] args)
@@ -139,7 +143,7 @@ namespace HW_FromPrevious1
             Console.WriteLine();
             Console.WriteLine($"Вывести максимальное значение элементов: {dArray.Max()}");
             Console.WriteLine($"Вывести сумму элементов: {dArray.Sum()}");
-            Console.WriteLine($"Вывести сумму элементов от заданного числа: {dArray.Sum(2)}");
+            Console.WriteLine($"Вывести сумму элементов от заданного числа: {dArray.Sum(4)}");
             Console.Write("Вывести индекс элемента с маскимальным значением: ");
             dArray.IndMax();
             Console.WriteLine($"Вывести элемент с минимальным значением: {dArray.Min()} ");
