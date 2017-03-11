@@ -28,6 +28,14 @@ namespace HW_FromPrevious1
                 for (int j = 0; j < a; j++)
                     dArray[i, j] = rnd.Next(min, max);
         }
+        public int Sum()
+        {
+            int sum = 0;
+            for (int i = 0; i < dArray.GetLength(0); i++)
+                for (int j = 0; j < dArray.GetLength(1); j++)
+                    sum += dArray[i, j];
+            return sum;
+        }
     }
     //2.2
     class Program
