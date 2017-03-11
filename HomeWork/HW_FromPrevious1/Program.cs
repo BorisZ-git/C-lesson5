@@ -132,22 +132,41 @@ namespace HW_FromPrevious1
     {
         Random rnd = new Random();
         int[,] ldarray;
-        public LoadDA(int n, int a, int min, int max)
-        {
-            ldarray = new int[n, a];
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < a; j++)
-                    ldarray[i, j] = rnd.Next(min, max);            
+        public LoadDA()
+        {           
             try
             {
-                File.Open("data.txt", FileMode.OpenOrCreate);                
+                StreamWriter stw = new StreamWriter("data.txt");
+                stw.Close();  
+                              
+            }
+            catch 
+            {
+                File.Create("data.txt");
+            }
+        }
+        public void SaveArray(int n, int a, int min, int max)
+        {
+            ldarray = new int[n, a];
+            StreamWriter stw = null;
+            try
+            {
+                using (stw = new StreamWriter("data.txt"))
+                {
+                    for (int i = 0; i < n; i++)
+                        for (int j = 0; j < a; j++)
+                            stw.Write(string.Format($"{ldarray[i, j] = rnd.Next(min, max)} "));
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
         }
+        public void LoadArray()
+        {
 
+        }
     }
     class Program
     {
@@ -186,7 +205,8 @@ namespace HW_FromPrevious1
             Console.Clear();
             #region 2.2
 
-            LoadDA LdArray = new LoadDA(2,2,0,10);
+            LoadDA LdArray = new LoadDA();
+            LdArray.SaveArray(2, 2, 0, 10);
             Console.ReadLine();
             #endregion
         }
