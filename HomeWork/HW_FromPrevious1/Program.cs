@@ -133,17 +133,22 @@ namespace HW_FromPrevious1
         Random rnd = new Random();
         int[,] ldarray;
         public LoadDA()
-        {           
-            try
+        {
+            if (File.Exists("data.txt")) return; 
+            else
             {
-                StreamWriter stw = new StreamWriter("data.txt");
-                stw.Close();  
-                              
-            }
-            catch 
-            {
-                File.Create("data.txt");
-            }
+                try
+                {
+                    StreamWriter stw = new StreamWriter("data.txt");
+                    stw.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    //File.Create("data.txt");
+                }
+            }       
+
         }
         public void SaveArray(int n, int a, int min, int max)
         {
@@ -163,9 +168,27 @@ namespace HW_FromPrevious1
                 Console.WriteLine(e);
             }
         }
-        public void LoadArray()
+        public void LoadArray(int n, int a)
         {
+            StreamReader str = null;
+            ldarray = new int[n, a];
+            try
+            {
+                str = new StreamReader("data.txt");
+                string values = str.ReadLine();
+                string[] fields = values.Split(' ');
+                for (int i = 0; i < n ; i++)
+                    for (int j = 0; j < a ; j++)
+                    {
+                        ldarray[i, j] = int.Parse(fields[i + j]);
+                        Console.Write($"{i},{j} = {ldarray[i, j]}   ");
+                    }
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
     class Program
@@ -199,16 +222,21 @@ namespace HW_FromPrevious1
 
             Console.WriteLine();
             #endregion
-            Console.WriteLine("После нажатия любой клавиши"+
+            Console.WriteLine("После нажатия клавиши Enter" +
                 " запуститься вторая часть программы");
             Console.ReadLine();
             Console.Clear();
             #region 2.2
 
             LoadDA LdArray = new LoadDA();
-            LdArray.SaveArray(2, 2, 0, 10);
-            Console.ReadLine();
+            
+            Console.WriteLine("1  = Сохранить новые данные.\t2 = Вывести массив");
+            int UserAnswer; int.TryParse(Console.ReadLine(),out UserAnswer);
+            int n = 2, a = 2;
+            if (UserAnswer == 1) LdArray.SaveArray(n, a, 0, 50);
+            if (UserAnswer == 2) LdArray.LoadArray(n,a);
             #endregion
+            Console.ReadLine();
         }
         
     }
