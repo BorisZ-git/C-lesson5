@@ -66,7 +66,7 @@ namespace HW_FromPrevious1
             string NumMax = "";
             for (int i = 0; i < dArray.GetLength(0); i++)
                 for (int j = 0; j < dArray.GetLength(1); j++)
-                    if (dArray[i, j].Equals(Max())) { NumMax = i + "," + j; break; }
+                    if (dArray[i, j].Equals(Max())) { Console.WriteLine($"{i},{j}"); }
             return NumMax;            
         }
 
