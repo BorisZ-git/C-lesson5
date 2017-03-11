@@ -15,9 +15,15 @@ namespace HW_FromPrevious2
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Create();
+            string[] question = new string[5];
+            for (int i = 0; i < question.Length; i++)
+                question[i] = Load();
+            foreach (var c in question) Console.WriteLine(c);
+            Console.ReadLine();
         }
         static void Create()
         {
@@ -49,6 +55,25 @@ namespace HW_FromPrevious2
             {
                 Console.WriteLine(e);
             }
+
+        }
+        static string Load()
+        {
+            Random rnd = new Random();
+            string[] lines = new string[10];
+            StreamReader sr = null;
+            try
+            {
+                sr = new StreamReader("data.txt");
+                for (int i = 0; !sr.EndOfStream; i++)
+                    lines[i] = sr.ReadLine();
+            }
+            catch (Exception e)
+            {
+               Console.WriteLine(e);
+            }
+            int a = rnd.Next(0, 9);
+            return lines[a];
 
         }
     }
