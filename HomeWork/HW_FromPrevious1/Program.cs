@@ -36,6 +36,14 @@ namespace HW_FromPrevious1
                     sum += dArray[i, j];
             return sum;
         }
+        public int Sum(int a)
+        {
+            int sum = 0;
+            for (int i = 0; i < dArray.GetLength(0); i++)
+                for (int j = 0; j < dArray.GetLength(1); j++)
+                    if (dArray[i, j]>a) sum += dArray[i, j];
+            return sum;
+        }
         public int Min()
         {
             int min = dArray[0,0];
@@ -51,6 +59,15 @@ namespace HW_FromPrevious1
                 for (int j = 0; j < dArray.GetLength(1); j++)
                     if (dArray[i, j] > max) max = dArray[i, j];
             return max;
+        }
+        //Индекс через цикл
+        public string IndMax()
+        {
+            string NumMax = "";
+            for (int i = 0; i < dArray.GetLength(0); i++)
+                for (int j = 0; j < dArray.GetLength(1); j++)
+                    if (dArray[i, j].Equals(Max())) { NumMax = i + "," + j; break; }
+            return NumMax;            
         }
 
     }
