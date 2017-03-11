@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 /* Boris Z
  * 2.1 Реализовать класс для работы с двумерным массивом. Реализовать конструктор, заполняющий
-массив случайными числами. Создать методы, которые возвращают сумму всех элементов
-массива, сумму всех элементов массива больше заданного, свойство, возвращающее
+массив случайными числами. Создать методы, которые возвращают сумму всех элементов массива,
+сумму всех элементов массива больше заданного(видимо заданного числа), свойство, возвращающее
 минимальный элемент массива, свойство, возвращающее максимальный элемент массива, метод,
 возвращающий номер максимального элемента массива (через параметры, используя
 модификатор ref или out)
@@ -36,6 +36,23 @@ namespace HW_FromPrevious1
                     sum += dArray[i, j];
             return sum;
         }
+        public int Min()
+        {
+            int min = dArray[0,0];
+            for (int i = 0; i < dArray.GetLength(0); i++)
+                for (int j = 0; j < dArray.GetLength(1); j++)
+                    if (dArray[i, j] < min) min = dArray[i, j];
+            return min;
+        }
+        public int Max()
+        {
+            int max = dArray[0, 0];
+            for (int i = 0; i < dArray.GetLength(0); i++)
+                for (int j = 0; j < dArray.GetLength(1); j++)
+                    if (dArray[i, j] > max) max = dArray[i, j];
+            return max;
+        }
+
     }
     //2.2
     class Program
