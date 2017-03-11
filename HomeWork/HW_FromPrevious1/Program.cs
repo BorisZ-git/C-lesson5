@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.IO;
 /* Boris Z
  * 2.1 Реализовать класс для работы с двумерным массивом. Реализовать конструктор, заполняющий
 массив случайными числами. Создать методы, которые возвращают сумму всех элементов массива,
@@ -130,12 +130,30 @@ namespace HW_FromPrevious1
     //2.2
     class LoadDA
     {
+        Random rnd = new Random();
+        int[,] ldarray;
+        public LoadDA(int n, int a, int min, int max)
+        {
+            ldarray = new int[n, a];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < a; j++)
+                    ldarray[i, j] = rnd.Next(min, max);            
+            try
+            {
+                File.Open("data.txt", FileMode.OpenOrCreate);                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
     }
     class Program
     {
         static void Main(string[] args)
         {
+            #region 2.1
             DoubleArray dArray = new DoubleArray(2, 2, 0, 10);
             int[,] thearray = dArray.Create(2,3,0,100);
             Console.WriteLine("Вывести значения элементов: ");
@@ -160,10 +178,19 @@ namespace HW_FromPrevious1
             Console.Write("Вывести индекс элемента с маскимальным значением (ref): ");
             dArray.MaxValInd(ref thearray);
 
-
+            Console.WriteLine();
+            #endregion
+            Console.WriteLine("После нажатия любой клавиши"+
+                " запуститься вторая часть программы");
             Console.ReadLine();
-        }
+            Console.Clear();
+            #region 2.2
 
+            LoadDA LdArray = new LoadDA(2,2,0,10);
+            Console.ReadLine();
+            #endregion
+        }
+        
     }
 }
 
