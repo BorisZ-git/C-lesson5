@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 /* Boris Z
- * ***Написать игру “Верю. Не верю”. В файле хранятся некоторые данные и правда это или нет.
+ * Написать игру “Верю. Не верю”. В файле хранятся некоторые данные и правда это или нет.
 Например: “Шариковую ручку изобрели в древнем Египте”, “Да”.
 Компьютер загружает эти данные, случайным образом выбирает 5 вопросов и задает их игроку.
 Игрок пытается ответить правда или нет, то что ему загадали и набирает баллы. Список вопросов
@@ -20,10 +20,21 @@ namespace HW_FromPrevious2
         static void Main(string[] args)
         {
             Create();
+            string[] fields = new string[2];
+            string[] answer = new string[5];
             string[] question = new string[5];
-            question = Load(question);            
+            string[] lines = Load(question);
+            for (int i = 0;i<question.Length;i++ )
+            {
+                fields = lines[i].Split('|');
+                question[i] = fields[0];
+                answer[i] = fields[1];
+            }
+         
 
             foreach (var c in question) Console.WriteLine(c);
+            foreach (var c in answer) Console.WriteLine(c);
+
             Console.ReadLine();
         }
         static void Create()
