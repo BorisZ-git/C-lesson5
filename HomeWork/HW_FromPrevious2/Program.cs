@@ -30,11 +30,25 @@ namespace HW_FromPrevious2
                 question[i] = fields[0];
                 answer[i] = fields[1];
             }
-         
+            #region через Двумерный массив
+            //string [,] question = new string [2,5];
+            //for (int i = 0;i<question.GetLenght(1);i++ )
+            //{
+            //fields = lines[i].Split('|');
+            //question (0,i) = fields[0];
+            //question (1,i) = fields[1];
+            //}
 
-            foreach (var c in question) Console.WriteLine(c);
-            foreach (var c in answer) Console.WriteLine(c);
+            #endregion
 
+            int score= 0;
+            for (int j = 0; j < question.Length; j++)
+            {
+                Console.WriteLine(question[j]);
+                string UserAnswer = Console.ReadLine();
+                if (UserAnswer == answer[j]) score++;
+            }
+            Console.WriteLine(score);
             Console.ReadLine();
         }
         static void Create()
