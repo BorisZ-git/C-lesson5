@@ -24,12 +24,14 @@ namespace HW_FromPrevious2
             string[] answer = new string[5];
             string[] question = new string[5];
             string[] lines = Load(question);
+
             for (int i = 0;i<question.Length;i++ )
             {
                 fields = lines[i].Split('|');
                 question[i] = fields[0];
                 answer[i] = fields[1];
             }
+
             #region через Двумерный массив
             //string [,] question = new string [2,5];
             //for (int i = 0;i<question.GetLenght(1);i++ )
@@ -46,9 +48,11 @@ namespace HW_FromPrevious2
             {
                 Console.WriteLine(question[j]);
                 string UserAnswer = Console.ReadLine();
-                if (UserAnswer == answer[j]) score++;
+                if (UserAnswer == answer[j] || UserAnswer == answer[j].ToLower()
+                    || UserAnswer == answer[j].ToUpper()) score++;
+                else Console.WriteLine("Ответ не верный!");
             }
-            Console.WriteLine(score);
+            Console.WriteLine($"Ваши очки = {score}");
             Console.ReadLine();
         }
         static void Create()
