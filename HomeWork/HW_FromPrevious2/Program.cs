@@ -9,7 +9,8 @@ using System.IO;
 Например: “Шариковую ручку изобрели в древнем Египте”, “Да”.
 Компьютер загружает эти данные, случайным образом выбирает 5 вопросов и задает их игроку.
 Игрок пытается ответить правда или нет, то что ему загадали и набирает баллы. Список вопросов
-ищите во вложении или можно воспользоваться Интернетом.*/
+ищите во вложении или можно воспользоваться Интернетом.
+*/
 
 namespace HW_FromPrevious2
 {
@@ -20,8 +21,8 @@ namespace HW_FromPrevious2
         {
             Create();
             string[] question = new string[5];
-            for (int i = 0; i < question.Length; i++)
-                question[i] = Load();
+            question = Load(question);            
+
             foreach (var c in question) Console.WriteLine(c);
             Console.ReadLine();
         }
@@ -57,24 +58,44 @@ namespace HW_FromPrevious2
             }
 
         }
-        static string Load()
+        static string[] Load(string[] _question)
         {
             Random rnd = new Random();
             string[] lines = new string[10];
+            string[] question = _question;            
+            string check;
             StreamReader sr = null;
             try
             {
                 sr = new StreamReader("data.txt");
                 for (int i = 0; !sr.EndOfStream; i++)
                     lines[i] = sr.ReadLine();
+
+
+                int a;                
+                for (int i = 0; i < question.Length; i++)
+                {
+                    a = rnd.Next(0, lines.Length);
+                    check = lines[a];
+                    for (int j = 0; j < question.Length; j++) 
+                        if (question[j]==check)
+                        {
+                            a = rnd.Next(0, lines.Length);
+                            check = lines[a];
+                            j = -1;
+                        }
+                    question[i] = check;
+                }
             }
+
+
             catch (Exception e)
             {
                Console.WriteLine(e);
-            }
-            int a = rnd.Next(0, 9);
-            return lines[a];
+            }            
+            return question;
 
         }
+
     }
 }
