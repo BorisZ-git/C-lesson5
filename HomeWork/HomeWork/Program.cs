@@ -15,8 +15,15 @@ namespace HomeWork
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            // 1.1
+            string Login = Console.ReadLine();            char[] check = Login.ToCharArray();
+            if (char.IsDigit(check[0]))
+                Console.WriteLine("Первым символом пароля не может быть цифра!");            if (check.Length<2||check.Length>10)                Console.WriteLine("Логин строго от 2-х до 10-ти символов ");            for (int i = 0; i < check.Length; i++)
+                if (!char.IsLetterOrDigit(check[i]))                    Console.WriteLine("Логин может содержать только буквы или цифры");            Console.WriteLine("Все верно");
+            Console.ReadLine();
         }
+
     }
 }
