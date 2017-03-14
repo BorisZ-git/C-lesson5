@@ -29,22 +29,19 @@ namespace HomeWork
             for (int i = 0; i < check.Length; i++)
                 if (!char.IsLetterOrDigit(check[i]))
                     Console.WriteLine("Логин может содержать только буквы или цифры");
-            //Console.WriteLine("Все верно");
 
             //1.2
             Console.WriteLine("Введите логин: ");
             string LoginReg = Console.ReadLine();
-            //Regex reg = new Regex(@"\W|^[0-9]");
             Regex reg = new Regex(@"\W");
             Regex regNum = new Regex(@"^[0-9]");
+            Regex regLength = new Regex(@"^(\w|\d){2,10}$");
             if (reg.IsMatch(LoginReg))
                 Console.WriteLine("Логин может содержать только буквы или цифры");
             if (regNum.IsMatch(LoginReg))
                 Console.WriteLine("Первым символом пароля не может быть цифра!");
-
-
-
-
+            if (!regLength.IsMatch(LoginReg))
+                Console.WriteLine("Логин строго от 2-х до 10-ти символов ");
 
             Console.ReadLine();
         }
