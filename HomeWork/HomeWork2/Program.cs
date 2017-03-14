@@ -27,11 +27,21 @@ namespace HomeWork2
             string UserChoose = Console.ReadLine();
             if (UserChoose=="1")
                 str = Console.ReadLine();
+            MyString mystr = new MyString(str);
+            mystr.ShowLength();
         }
     }
     //2.4
     class MyString
     {
+        string str;
+        public MyString(string str)
+        {
+            this.str = str;
+        }
+        public void ShowLength()
+        {
 
+        }
     }
 }
