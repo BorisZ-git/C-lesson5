@@ -45,12 +45,23 @@ namespace HomeWork2
         {
             string[] field;
             field = str.Split(' ');
+            int count = 0;
             for (int i = 0; i < field.Length; i++)
             {
                 if (field[i].Length <= n)
+                {
+                    count++;
                     Console.Write($"{field[i]} ");
-                //Add a line break
+                }
+                //add a line break
+                if (count > 9)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
             }
+
         }
+
     }
 }
