@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 /* Boris Z
 2 Разработать методы для решения следующих задач. Дано сообщение:
 2.1 Вывести только те слова сообщения, которые содержат не более чем n букв;
@@ -19,33 +20,36 @@ namespace HomeWork2
     {
         static void Main(string[] args)
         {            
-            string str = "Дано сообщение: Вывести только те слова сообщения," +
-                "которые содержат не более чем n букв" + "Удалить из сообщения все слова," +
-                "которые заканчиваются на заданный символ." +
-                "Найти самое длинное слово сообщения" + 
-                "Найти все самые длинные слова сообщения.";
+            string str = "сообщение в котором все тебя ненавидят";
             string UserChoose = Console.ReadLine();
             if (UserChoose=="1")
                 str = Console.ReadLine();
             MyString mystr = new MyString(str);
             mystr.ShowLength(10);
+            Console.WriteLine("\n\n");
+
+
+            mystr.RemoveEndSym("я");
+            Console.WriteLine("\n\n");
+
+
+            mystr.LongerWord();
             Console.ReadLine();
         }
     }
     //2.4
     class MyString
     {
-        string str;
+        string[] field;
+        int count = 0;        
         public MyString(string str)
         {
-            this.str = str;
+            field = str.Split(' ');
         }
         //2.1
         public void ShowLength(int n)
         {
-            string[] field;
-            field = str.Split(' ');
-            int count = 0;
+
             for (int i = 0; i < field.Length; i++)
             {
                 if (field[i].Length <= n)
@@ -62,6 +66,34 @@ namespace HomeWork2
             }
 
         }
-
+        //2.2
+        public void RemoveEndSym(string sym)
+        {
+            for (int i = 0; i < field.Length; i++)
+            {
+                if (!field[i].EndsWith(sym))
+                {
+                    count++;
+                    Console.Write($"{field[i]} ");
+                }
+                //add a line break
+                if (count > 10)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+            }
+        }
+        //2.3
+        public void LongerWord()
+        {
+            string max = field[0];
+            for (int  i = 0; i < field.Length; i++)
+            {
+                if (field[i].Length > max.Length)
+                    max = field[i];
+            }
+            Console.WriteLine(max);
+        }
     }
 }
