@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 3.1 с использованием методов C#
 3.2 разработав собственный алгоритм
 Например:
-badc являются перестановкой abcd*/
+badc являются перестановкой abcd
+*/
 
 namespace HomeWork3
 {
