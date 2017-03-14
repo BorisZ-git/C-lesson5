@@ -48,17 +48,7 @@ namespace HomeWork3
         //3.2
         static void MyAlg(string str1, string str2)
         {
-            char[] a = str1.ToCharArray();
-            char[] b = str2.ToCharArray();
-            Array.Sort(a);
-            Array.Sort(b);
-            str1 = new string(a);
-            str2 = new string(b);
-            int result = String.Compare(str1, str2, true);
-            if (result == 0)
-                Console.WriteLine("Строки равны");
-            else
-                Console.WriteLine("Строки не равны");
+
         }
 
     }
