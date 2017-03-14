@@ -19,6 +19,7 @@ namespace HomeWork2
     class Program
     {
         static void Main(string[] args)
+
         {            
             string str = "сообщение в котором все тебя ненавидят";
             string UserChoose = Console.ReadLine();
@@ -34,10 +35,14 @@ namespace HomeWork2
 
 
             mystr.LongerWord();
+            Console.WriteLine("\n\n");
+
+
+            mystr.AllLongerWords();
             Console.ReadLine();
         }
     }
-    //2.4
+    
     class MyString
     {
         string[] field;
@@ -94,6 +99,14 @@ namespace HomeWork2
                     max = field[i];
             }
             Console.WriteLine(max);
+        }
+        //2.4
+        public void AllLongerWords()
+        {
+            int value = String.Join("",field).Length / field.Length;
+            for (int i = 0; i < field.Length; i++)
+                if (field[i].Length > value)
+                    Console.Write($"{field[i]} ");
         }
     }
 }
