@@ -28,7 +28,8 @@ namespace HomeWork2
             if (UserChoose=="1")
                 str = Console.ReadLine();
             MyString mystr = new MyString(str);
-            mystr.ShowLength();
+            mystr.ShowLength(10);
+            Console.ReadLine();
         }
     }
     //2.4
@@ -39,9 +40,17 @@ namespace HomeWork2
         {
             this.str = str;
         }
-        public void ShowLength()
+        //2.1
+        public void ShowLength(int n)
         {
-
+            string[] field;
+            field = str.Split(' ');
+            for (int i = 0; i < field.Length; i++)
+            {
+                if (field[i].Length <= n)
+                    Console.Write($"{field[i]} ");
+                //Add a line break
+            }
         }
     }
 }
