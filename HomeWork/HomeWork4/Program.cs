@@ -24,10 +24,13 @@ using System.Threading.Tasks;
 
 namespace HomeWork4
 {
-    class Program
+
+        class Program
     {
         static void Main(string[] args)
         {
+
+            Console.ReadLine();
         }
     }
 }
