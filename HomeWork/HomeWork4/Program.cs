@@ -29,7 +29,12 @@ namespace HomeWork4
     {
         static void Main(string[] args)
         {
-
+            string[] name = new string[10] {"Петр", "Иван", "Андрей", "Ольга", "Юлия","Анастасия"
+            ,"Владимир","Валерия","Александра","Игорь",};
+            string[] secodname = new string[10];
+            string[] valuation = new string[10];
+
+
             Console.ReadLine();
         }
     }
