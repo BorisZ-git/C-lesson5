@@ -24,6 +24,23 @@ namespace HomeWork4
         public Students_Info()
         {
             //stremreder
+            StreamReader sr = null;
+            string[] studentsinfo = null;
+            try
+            {
+                sr = new StreamReader("studentsinfo.txt");
+                while (true)
+                {
+                    for (int i = 0;i<100;i++)
+                    studentsinfo[i] = sr.ReadLine();
+                    if (sr.EndOfStream)
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             #region string
             string[] studentsinfo = new string[10];
             studentsinfo[0] = "Петров | Петр | 4 5 3";
