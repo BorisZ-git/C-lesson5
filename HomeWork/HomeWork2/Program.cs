@@ -21,7 +21,7 @@ namespace HomeWork2
         static void Main(string[] args)
 
         {            
-            string str = "сообщение в котором все тебя ненавидят";
+            string str = "сообщение в котором все тебя любят";
             string UserChoose = Console.ReadLine();
             if (UserChoose=="1")
                 str = Console.ReadLine();
