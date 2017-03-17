@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HomeWork4
 {
@@ -11,7 +12,7 @@ namespace HomeWork4
         string[] name = new string[10];
         string[] secodname = new string[10];
         string[] valuation = new string[10];        
-        public string[] ShowString()
+        public string[] GetString()
         {
             string[] N = new string[name.Length];
             for (int i = 0; i < name.Length; i++)
@@ -19,6 +20,33 @@ namespace HomeWork4
                 N[i] = name[i] + secodname[i] + valuation[i];
             }            
             return N;
+        }
+        public Students_Info()
+        {
+            #region string
+            string[] studentsinfo = new string[10];
+            studentsinfo[0] = "Петров | Петр | 4 5 3";
+            studentsinfo[1] = "Иванов | Иван | 3 4 3";
+            studentsinfo[2] = "Олегов | Олег | 5 5 5";
+            studentsinfo[3] = "Иванова | Ксения | 3 3 3";
+            studentsinfo[4] = "Козлов | Козел | 2 5 4";
+            studentsinfo[5] = "Козлова | Ольга | 5 3 2";
+            studentsinfo[6] = "Калашникова | Анастасия | 4 3 2";
+            studentsinfo[7] = "Синев | Роберт | 3 2 3";
+            studentsinfo[8] = "Сивале | Никсон | 4 3 2";
+            studentsinfo[9] = "Никифоров | Алексей | 4 4 4";
+            #endregion
+            #region split nd set
+            string[] fields = null;
+            for (int i = 0; i < studentsinfo.Length; i++)
+            {
+                fields = studentsinfo[i].Split('|');
+                name[i] = fields[0];
+                secodname[i] = fields[1];
+                valuation[i] = fields[2];
+            }
+            #endregion
+
         }
     }
     

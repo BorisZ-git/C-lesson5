@@ -29,7 +29,10 @@ namespace HomeWork4
     {
         static void Main(string[] args)
         {
-
+            Students_Info dt = new Students_Info();
+            string[] N = dt.GetString();
+            foreach (var c in N)
+                Console.WriteLine(c);
 
 
             Console.ReadLine();
