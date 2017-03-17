@@ -23,6 +23,7 @@ namespace HomeWork4
         }
         public Students_Info()
         {
+            //stremreder
             #region string
             string[] studentsinfo = new string[10];
             studentsinfo[0] = "Петров | Петр | 4 5 3";
@@ -41,12 +42,17 @@ namespace HomeWork4
             for (int i = 0; i < studentsinfo.Length; i++)
             {
                 fields = studentsinfo[i].Split('|');
+                //if i.lenght>15
                 name[i] = fields[0];
                 secodname[i] = fields[1];
                 valuation[i] = fields[2];
             }
             #endregion
 
+        }
+        public void MidBaddestRes()
+        {
+            int min;
         }
     }
     
